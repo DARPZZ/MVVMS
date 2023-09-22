@@ -1,35 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace MVVMS.ViewModel
 {
-    class BlueViewModel : Model.Bindable
+    public class BlueViewModel
     {
-        private string id = "Blue";
-
-        public string ID
-        {
-            get { return id; }
-            set { id = value; this.propertyIsChanged(); }
-        }
+        public ICommand ChangePageCMD { get; private set; }
 
         public BlueViewModel()
         {
-            AddTextCMD = new DelegateCommand(Add);
-            ChangePageCMD = new DelegateCommand(Add);
+            ChangePageCMD = new DelegateCommand(ChangePage);
         }
 
-        public ICommand AddTextCMD { get; set; }
-        public ICommand ChangePageCMD { get; set; } = new DelegateCommand(() => { ((App)App.Current).ChangeUserControl(typeof(RedViewModel)); });
-
-
-        private void Add()
+        private void ChangePage()
         {
-            this.ID += " BLUE ";
+            ((App)App.Current).ChangeUserControl(typeof(RedViewModel));
         }
     }
 }
