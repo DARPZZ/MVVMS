@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MVVMS.Model
+namespace MVVMS.Helpers
 {
     public abstract class Bindable : INotifyPropertyChanged
     {
